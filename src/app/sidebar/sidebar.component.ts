@@ -12,4 +12,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+  get loggedOut(): boolean {
+    return localStorage.getItem('token') === null;
+  }
+
 }

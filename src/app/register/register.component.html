@@ -1,0 +1,311 @@
+<div class="col-md-6 offset-md-3 col-xs-12">
+  <h1 class="text-xs-center">{{ title }}</h1>
+
+  <div class="success-message" [hidden] = "!registerSuccess">
+    User registered successfully, please <a routerLink="/login">login</a> to continue.
+  </div>
+
+  <form [formGroup]="registerForm" [hidden]="registerSuccess" (ngSubmit)="register()">
+
+    <div class="p-5 text-center" >
+      Have an account?  <a routerLink="/login">login</a> here.
+    </div>
+
+    <fieldset [disabled]="isSubmitting">
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          User name
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group" >
+            <input
+              formControlName="username"
+              placeholder="Username"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('username').errors && ( registerForm.get('username').touched || registerForm.get('username').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('username').errors.required">
+                  Username field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('username').errors.minlength || registerForm.get('username').errors.maxlength">
+                  Username must be of 5 to 20 character!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('username').hasError('userExists')">
+                 Username is already in use.!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Password
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              class="form-control form-control-lg"
+              type="password"/>
+
+              <span class="p-3" *ngIf="registerForm.get('password').errors && ( registerForm.get('password').touched || registerForm.get('password').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('password').errors.required">
+                  Password field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('password').errors.minlength || registerForm.get('password').errors.maxlength">
+                  Password must be of 6 to 20 character!
+                </span>
+             </span>
+
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Verify Password
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              matInput
+              [errorStateMatcher]="errorMatcher"
+              formControlName="verifyPassword"
+              placeholder="Verify Password"
+              class="form-control form-control-lg"
+              type="password"/>
+
+            <span class="p-3" *ngIf="( registerForm.get('verifyPassword').touched || registerForm.get('verifyPassword').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.hasError('passwordsDoNotMatch')">
+                  Password and Verify Password should be same!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Title
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="title"
+              placeholder="Title"
+              class="form-control form-control-lg"
+              type="text"/>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          First name
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="firstname"
+              placeholder="First name"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('firstname').errors && ( registerForm.get('firstname').touched || registerForm.get('firstname').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('firstname').errors.required">
+                  First name field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('firstname').errors.minlength || registerForm.get('firstname').errors.maxlength">
+                  First name must not be more than 45 character!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Last name
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="lastname"
+              placeholder="Last name"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('lastname').errors && ( registerForm.get('lastname').touched || registerForm.get('lastname').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('lastname').errors.required">
+                  Last name field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('lastname').errors.minlength || registerForm.get('lastname').errors.maxlength">
+                  Last name must not be more than 45 character!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Address 1
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="address1"
+              placeholder="Address 1"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('address1').errors && ( registerForm.get('address1').touched || registerForm.get('address1').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('address1').errors.required">
+                  Address 1 field is required!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Address 2
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="address2"
+              placeholder="Address 2"
+              class="form-control form-control-lg"
+              type="text"/>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          City
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="city"
+              placeholder="City"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('city').errors && ( registerForm.get('city').touched || registerForm.get('city').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('city').errors.required">
+                  City field is required!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Postal code
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="postalCode"
+              placeholder="Postal code"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('postalCode').errors && ( registerForm.get('postalCode').touched || registerForm.get('postalCode').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('postalCode').errors.required">
+                  Postal Code field is required!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Phone
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="phone"
+              placeholder="Phone"
+              class="form-control form-control-lg"
+              type="text"/>
+
+            <span class="p-3" *ngIf="registerForm.get('phone').errors && ( registerForm.get('phone').touched || registerForm.get('phone').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('phone').errors.required">
+                  Phone field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('phone').errors.minlength || registerForm.get('phone').errors.maxlength">
+                  Invalid Phone Number!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Mobile
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="mobile"
+              placeholder="Mobile"
+              class="form-control form-control-lg"
+              type="text"/>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Email
+        </div>
+        <div class="col-8 p-2">
+          <fieldset class="form-group" [ngClass]="{'has-error' : registerForm.get('email').errors}">
+            <input
+              formControlName="email"
+              placeholder="Email"
+              class="form-control form-control-lg"
+              type="email" usernameEmailValidator />
+            <span class="p-3" *ngIf="registerForm.get('email').errors && ( registerForm.get('email').touched || registerForm.get('email').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('email').errors.required">
+                  Email is required field!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('email').hasError('pattern')">
+                 Invalid email! Please enter valid Email!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('email').hasError('userExists')">
+                 Email already in use. Please use other!
+                </span>
+
+            </span>
+
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2"> </div>
+        <div class="col-8">
+          <button class="btn btn-lg btn-primary pull-xs-right" type="submit" [disabled]="!registerForm.valid">
+            Register
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+

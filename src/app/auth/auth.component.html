@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="auth-page">
+    <div>
+      <div class="row text-right">
+        <div>
+          <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+            <div>
+              <div class="form-group">
+                <input
+                  formControlName="email"
+                  placeholder="Email"
+                  class="form-control-lg"
+                  type="text"/>
+              </div>
+              <div class="form-group">
+                <input
+                  formControlName="password"
+                  placeholder="Password"
+                  class="form-control-lg"
+                  type="password"/>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-lg btn-primary p-3" type="submit">
+                    Login
+                  </button>
+                </div>
+                <div class="col-6">
+                  <a class="btn btn-lg btn-primary p-3" href="register">Register</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

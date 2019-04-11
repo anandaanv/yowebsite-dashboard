@@ -17,6 +17,9 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthComponent } from './auth/auth.component';
+import {CreateWebsiteComponent} from "./create-website/create-website.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -35,7 +38,10 @@ const routes: Routes = [
   { path: 'dropdowns', component: DropdownComponent },
   { path: 'tooltips', component: TooltipsComponent },
   { path: 'carousel', component: CarouselComponent },
-  { path: 'tabs', component: TabsComponent }
+  { path: 'tabs', component: TabsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: AuthComponent },
+  { path: 'create-website', component: CreateWebsiteComponent }
 ];
 
 @NgModule({
