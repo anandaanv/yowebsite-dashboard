@@ -20,28 +20,29 @@ import { TabsComponent } from './tabs/tabs.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth/auth.component';
 import {CreateWebsiteComponent} from "./create-website/create-website.component";
+import {AuthGuard} from "./auth/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'forms', component: FormsComponent },
-  { path: 'buttons', component: ButtonsComponent },
-  { path: 'tables', component: TablesComponent },
-  { path: 'icons', component: IconsComponent },
-  { path: 'typography', component: TypographyComponent },
-  { path: 'alerts', component: AlertsComponent },
-  { path: 'accordions', component: AccordionsComponent },
-  { path: 'badges', component: BadgesComponent },
-  { path: 'progressbar', component: ProgressbarComponent },
-  { path: 'breadcrumbs', component: BreadcrumbsComponent },
-  { path: 'pagination', component: PaginationComponent },
-  { path: 'dropdowns', component: DropdownComponent },
-  { path: 'tooltips', component: TooltipsComponent },
-  { path: 'carousel', component: CarouselComponent },
-  { path: 'tabs', component: TabsComponent },
+  { path: '', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'forms', component: FormsComponent, canActivate: [AuthGuard] },
+  { path: 'buttons', component: ButtonsComponent, canActivate: [AuthGuard] },
+  { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
+  { path: 'icons', component: IconsComponent, canActivate: [AuthGuard] },
+  { path: 'typography', component: TypographyComponent, canActivate: [AuthGuard] },
+  { path: 'alerts', component: AlertsComponent, canActivate: [AuthGuard] },
+  { path: 'accordions', component: AccordionsComponent, canActivate: [AuthGuard] },
+  { path: 'badges', component: BadgesComponent, canActivate: [AuthGuard] },
+  { path: 'progressbar', component: ProgressbarComponent, canActivate: [AuthGuard] },
+  { path: 'breadcrumbs', component: BreadcrumbsComponent, canActivate: [AuthGuard] },
+  { path: 'pagination', component: PaginationComponent, canActivate: [AuthGuard] },
+  { path: 'dropdowns', component: DropdownComponent, canActivate: [AuthGuard] },
+  { path: 'tooltips', component: TooltipsComponent, canActivate: [AuthGuard] },
+  { path: 'carousel', component: CarouselComponent, canActivate: [AuthGuard] },
+  { path: 'tabs', component: TabsComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: AuthComponent },
-  { path: 'create-website', component: CreateWebsiteComponent }
+  { path: 'create-website', component: CreateWebsiteComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
