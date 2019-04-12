@@ -32,10 +32,11 @@ import { RegisterComponent } from './register/register.component';
 import {MDBBootstrapModulesPro, MDBSpinningPreloader} from 'ng-uikit-pro-standard';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material-module';
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {TokenInterceptor} from "./auth/token.interceptor";
-import {environment} from "../environments/environment";
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptor} from './auth/token.interceptor';
+import {environment} from '../environments/environment';
 import { CreateWebsiteComponent } from './create-website/create-website.component';
+import {AuthGuard} from './auth/auth.guard';
 
 
 @NgModule({
@@ -85,7 +86,9 @@ import { CreateWebsiteComponent } from './create-website/create-website.componen
     {
       provide: 'BASE_API_URL',
       useValue: environment.apiUrl
-    }],
+    },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

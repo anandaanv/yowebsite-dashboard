@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,9 @@ import {Router} from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Yo website - your website in a minute';
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    // if (!localStorage.getItem('token')) {
-    //   this.route.navigate(['login']);
-    // }
   }
 }
