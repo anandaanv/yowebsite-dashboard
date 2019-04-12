@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'star-admin-angular';
+  title = 'Yo website - your website in a minute';
 
   constructor(private route: Router) {
   }
