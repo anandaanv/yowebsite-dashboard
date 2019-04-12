@@ -5,13 +5,23 @@
         <div class="float-left">
           <i class="mdi mdi-crown text-danger icon-lg"></i>
         </div>
+        <div *ngIf="website.status==='LIVE'">
         <a target="_blank"  href="http://{{website.adminUrl}}">
           <div class="float-right">
-            <p class="mb-0">www.{{website.websiteName}}.com</p>
+            <input type="button" class= " btn btn-primary" value="Go to website" />
           </div>
         </a>
       </div>
+      <div *ngIf="website.status==='SETUP_COMPLETE'">
+          <div class="float-right">
+            <input type="button" class= " btn btn-primary" value="Go live" (click)="goLive(website)"/>
+          </div>
+      </div>
+      </div>
       <div class="card-body">
+          <div>
+             {{website.websiteName}}
+          </div>
         <p class="text-muted mt-3 mb-0">
           {{website.description}}
         </p>
