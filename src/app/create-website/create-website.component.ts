@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {WebsiteInfo} from "../website-card/website-info";
+import {WebsiteInfo} from '../website-card/website-info';
 
 @Component({
   selector: 'app-create-website',
@@ -14,8 +14,8 @@ export class CreateWebsiteComponent implements OnInit {
   title: String = 'Create website';
   isSubmitting: Boolean = false;
   websiteForm: FormGroup;
-  websiteName: string = '';
-  websiteCreated: boolean = false;
+  websiteInfo: WebsiteInfo;
+  websiteCreated = false;
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +44,7 @@ export class CreateWebsiteComponent implements OnInit {
       websiteName: details.websiteName,
       description: details.description
     }).subscribe((response) => {
-      this.mainRoute.navigate(['dashboard']);
+      this.websiteCreated = true;
     });
   }
 

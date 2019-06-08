@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

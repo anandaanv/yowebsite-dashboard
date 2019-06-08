@@ -2,23 +2,34 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">{{ title }}</h1>
+        <h1 class="text-xs-center" [hidden]="websiteCreated">{{ title }}</h1>
         <div class="success-message" [hidden]="!websiteCreated">
-            <div>website created successfully.</div> visit wwww.{{ websiteName }}.com to try.
+            <div>website created successfully.</div>
+            <div class="font-weight-bold">Next steps</div>
+          <ul>
+            <li>
+              Add dns entries for your website
+            </li>
+            <li>
+              Go to <a routerLink="/dashboard">dashboard</a> to finish the setup.
+            </li>
+          </ul>
         </div>
-        <form [formGroup]="websiteForm" (ngSubmit)="submitForm()">
+        <form [formGroup]="websiteForm" (ngSubmit)="submitForm()" [hidden]="websiteCreated">
           <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
               <input
                 formControlName="websiteName"
-                placeholder="Website name"
+                placeholder="www.google.com"
                 class="form-control form-control-lg"
-                type="text" />
+                type="text"
+                pattern="/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/"
+              />
             </fieldset>
             <fieldset class="form-group">
               <input
                 formControlName="description"
-                placeholder="Description"
+                placeholder="My website used for personal use"
                 class="form-control form-control-lg"
                 type="text" />
             </fieldset>

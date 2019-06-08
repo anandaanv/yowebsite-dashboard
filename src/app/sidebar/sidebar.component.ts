@@ -15,5 +15,7 @@ export class SidebarComponent implements OnInit {
   get loggedOut(): boolean {
     return localStorage.getItem('token') === null;
   }
-
+  get username(): String{
+    return localStorage.getItem('username');
+  }
 }

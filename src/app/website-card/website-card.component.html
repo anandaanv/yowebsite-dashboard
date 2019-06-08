@@ -6,22 +6,28 @@
           <i class="mdi mdi-crown text-danger icon-lg"></i>
         </div>
         <div *ngIf="website.status==='LIVE'">
-        <a target="_blank"  href="http://{{website.adminUrl}}">
+          <a target="_blank" href="http://{{website.adminUrl}}">
+            <div class="float-right pt-3">
+              <input type="button" class=" btn btn-primary" value="Visit admin panel"/>
+            </div>
+          </a>
+        </div>
+        <div *ngIf="website.status==='SETUP_COMPLETE'">
           <div class="float-right">
-            <input type="button" class= " btn btn-primary" value="Go to website" />
+            <input type="button" class=" btn btn-primary" value="Go live" (click)="goLive(website)"/>
           </div>
-        </a>
-      </div>
-      <div *ngIf="website.status==='SETUP_COMPLETE'">
+        </div>
+        <div *ngIf="website.status==='INFLATED' || website.status==='CREATED'">
           <div class="float-right">
-            <input type="button" class= " btn btn-primary" value="Go live" (click)="goLive(website)"/>
+            <input type="button" class=" btn btn-primary" value="Pending... please wait"/>
           </div>
-      </div>
+        </div>
       </div>
       <div class="card-body">
-          <div>
-             {{website.websiteName}}
-          </div>
+        <div>
+          <a target="_blank" *ngIf="website.status==='LIVE'" href="http://{{website.websiteName}}">{{website.websiteName}}</a>
+          <a target="_blank" *ngIf="website.status!=='LIVE'">{{website.websiteName}}</a>
+        </div>
         <p class="text-muted mt-3 mb-0">
           {{website.description}}
         </p>

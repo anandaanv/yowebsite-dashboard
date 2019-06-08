@@ -44,6 +44,6 @@ export class TokenInterceptor implements HttpInterceptor {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    this.mainRoute.navigate(['login']);
+    window.location.reload();
   }
 }

@@ -55,10 +55,6 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-        this.authType = 'register';
-    }
-
     register() {
         this.isSubmitting = true;
         const endpoint = 'users/signup';

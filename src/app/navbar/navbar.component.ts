@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
   get loggedOut(): boolean {
     return localStorage.getItem('token') === null;
   }
-
-
+  get username(): String{
+    return localStorage.getItem('username');
+  }
 }
