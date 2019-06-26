@@ -1,0 +1,103 @@
+<div class="col-md-6 offset-md-3 col-xs-12">
+  <h1 class="text-xs-center">{{ title }}</h1>
+
+  <h2>User Profile</h2>
+
+  <div class="success-message" [hidden] = "!profileSuccess">
+
+  </div>
+
+  <form [formGroup]="registerForm" [hidden]="profileSuccess" (ngSubmit)="onsubmit()">
+
+    <fieldset [disabled]="isSubmitted">
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Name
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group" >
+            <input
+              formControlName="username"
+              placeholder="Name"
+              class="form-control form-control-lg"
+              type="text" required />
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Email Address
+        </div>
+        <div class="col-8 p-2">
+          <fieldset class="form-group" [ngClass]="{'has-error' : registerForm.get('email').errors}">
+            <input
+              formControlName="email"
+              placeholder="Email"
+              class="form-control form-control-lg"
+              type="email" usernameEmailValidator required />
+            <span class="p-3" *ngIf="registerForm.get('email').errors && ( registerForm.get('email').touched || registerForm.get('email').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('email').errors.required">
+                  Email is required field!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('email').hasError('pattern')">
+                 Invalid email! Please enter valid Email!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('email').hasError('userExists')">
+                 Email already in use. Please use other!
+                </span>
+            </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Password
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              class="form-control form-control-lg"
+              type="password" required/>
+            <span class="p-3" *ngIf="registerForm.get('password').errors && ( registerForm.get('password').touched || registerForm.get('password').dirty)">
+                <span class="error-message m-3" *ngIf="registerForm.get('password').errors.required">
+                  Password field is required!
+                </span>
+                <span class="error-message m-3" *ngIf="registerForm.get('password').errors.minlength || registerForm.get('password').errors.maxlength">
+                  Password must be of 6 to 20 character!
+                </span>
+             </span>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2">
+          Mobile
+        </div>
+        <div class="col-8">
+          <fieldset class="form-group">
+            <input
+              formControlName="mobile"
+              placeholder="Mobile"
+              class="form-control form-control-lg"
+              type="text" required/>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 text-right p-2"> </div>
+        <div class="col-8">
+          <button class="btn btn-lg btn-primary pull-xs-right" type="submit" [disabled]="!registerForm.valid">
+            Submit
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
