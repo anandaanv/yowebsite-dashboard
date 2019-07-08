@@ -88,7 +88,7 @@ export class FormsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    const endpoint = '/form/submit';
+    const endpoint = 'users/update/0';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -104,7 +104,6 @@ export class FormsComponent implements OnInit {
       });
     this.submitted = false;
   }
-
 }
 
 interface ProfileResponse {

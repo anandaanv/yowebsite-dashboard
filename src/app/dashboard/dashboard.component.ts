@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
     }
 
     chargeCreditCard(id: number, modal) {
-        const payform = document.getElementById("stripe-payment-form");
+        const payform = document.getElementById('stripe-payment-form');
         (<any>window).Stripe.card.createToken({
             number: payform.cardNumber.value,
             exp_month: payform.expMonth.value,

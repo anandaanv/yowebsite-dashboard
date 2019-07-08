@@ -22,4 +22,4 @@ describe('DashboardComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
-});
+}); 

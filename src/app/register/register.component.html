@@ -2,6 +2,7 @@
   <h1 class="text-xs-center">{{ title }}</h1>
 
   <div class="success-message" [hidden] = "!registerSuccess">
+  	 <span th:text="'A verification email has been sent to: ' + ${email}"></span>
     User registered successfully, please <a routerLink="/login">login</a> to continue.
   </div>
 
